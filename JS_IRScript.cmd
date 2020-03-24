@@ -45,7 +45,6 @@ ECHO KORKIR is running...
 >> %LOG% ECHO.
 CALL lines.bat ENDLINE
 ECHO %COMPUTERNAME%
-ECHO %VERSION%
 CALL lines.bat ENDLINE
 >> %LOG% ECHO.
 >> %LOG% ECHO   END -- Date: %DATE% / Time: %TIME%
