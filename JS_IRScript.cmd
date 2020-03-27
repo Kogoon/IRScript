@@ -26,8 +26,7 @@ title K I R
 
 ::
 ::
-SET DATE = 
-SET LOG=.\log.txt
+SET LOG=%time:~0,2%%time:~3,2%%time:~6,2%log.txt
 
 SET /p MYNAME= Enter your name:
 echo %MYNAME%
