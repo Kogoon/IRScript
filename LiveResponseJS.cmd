@@ -17,17 +17,14 @@ ECHO ===============start Network Response==============
 ECHO.
 ECHO                디지털 포렌식  도구 개발
 ECHO.
+ECHO              ---------------------------
 ECHO                1. Computer Current Time
-ECHO.
 ECHO                2. Network List
-ECHO.
 ECHO                3. Network Address
-ECHO.
 ECHO                4. Network Route
-ECHO.
 ECHO                5. Netbios list
-ECHO.
 ECHO                6. Exit
+ECHO.
 ECHO ====================================================
 
 SET /p number= Enter the number: 
