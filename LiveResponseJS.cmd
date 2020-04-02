@@ -5,10 +5,11 @@
 :: Written by : Kogoon
 :: Joongbu Univ. Assignment
 :: 
-:: help https://yong40.tistory.com/112
+:: Help https://yong40.tistory.com/112
+:: Git https://github.com/Kogoon/IRScript
 ::
 :: 2020.03.29 start
-:: Assignment - 
+:: 2020.04.02 end
 
 :: KOREAN GARBLED -> ENCODING ANSI or Korean(EUC-kr)
 :: Don'show each command - only result - @echo off
@@ -50,6 +51,7 @@ if EXIST %LOG%. DEL %LOG%
 :_HOME
 >> %LOG% ECHO.
 ECHO ===============start Network Response==============
+ECHO       설정하신 이름이 로그 파일 이름으로 저장됩니다.
 ECHO.
 ECHO                디지털 포렌식  도구 개발
 ECHO.
@@ -57,13 +59,13 @@ ECHO              ---------------------------
 ECHO                1. Computer Current Time
 ECHO                2. OS version 
 ECHO                3. Computer IP Address
-ECHO                4.
-ECHO                5. 
-ECHO                6. 
-ECHO                7.
-ECHO                8.
-ECHO                9.
-ECHO                10.
+ECHO                4. Network Connect list
+ECHO                5. Process list
+ECHO                6. Loggedon User
+ECHO                7. Shared files
+ECHO                8. Open port
+ECHO                9. Service list
+ECHO                10. Moved files
 ECHO                11. Exit
 ECHO.
 ECHO ====================================================
@@ -75,20 +77,21 @@ SET /p number= Enter the number:
 if "%number%" == "1" GOTO _DATE
 if "%number%" == "2" GOTO _OS
 if "%number%" == "3" GOTO _IPCONFIG
-if "%number%" == "4" GOTO _ROUTE
-if "%number%" == "5" GOTO _NBTSTAT
-::if "%number%" == "6" GOTO
-::if "%number%" == "7" GOTO
-::if "%number%" == "8" GOTO
-::if "%number%" == "9" GOTO
-::if "%number%" == "10" GOTO
+if "%number%" == "4" GOTO _NETSTAT
+if "%number%" == "5" GOTO _PROCESS
+if "%number%" == "6" GOTO _LOGONUSER
+if "%number%" == "7" GOTO _SHAREDFILE
+if "%number%" == "8" GOTO _PORT
+if "%number%" == "9" GOTO _SERVICE
+if "%number%" == "10" GOTO _MOVEDFILE
 if "%number%" == "11" GOTO:EOF
 
 :: DATE
 :_DATE
 CLS
 >> %LOG% ECHO %LINE%
-ECHO 시스템의 날짜와 시간을 저장중입니다.
+ECHO TIME : %TIME%
+ECHO Saving.. System's Date and Time
 >> %LOG% ECHO DATE : %DATE% 
 >> %LOG% ECHO TIME : %TIME%
 >> %LOG% ECHO %LINE%
@@ -114,68 +117,65 @@ ECHO Saving.. Current IP Address
 PAUSE
 GOTO _HOME
 
-:: ROUTE
-:_ROUTE
+:: NETSTAT
+:_NETSTAT
 CLS
 >> %LOG% ECHO %LINE%
-ECHO ROUTE
+ECHO NETSTAT
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
 
-:: NBTSTAT
-:_NBTSTAT
+:: PROCESS
+:_PROCESS
 CLS
 >> %LOG% ECHO %LINE%
-ECHO NBTSTAT
+ECHO PROCESS
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
 
-::
-:_1
+:: LOGGEDON USER
+:_LOGONUSER
 CLS
 >> %LOG% ECHO %LINE%
+ECHO LOGONUSER
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
 
-::
-:_2
+:: SHARED FILE
+:_SHAREDFILE
 CLS
 >> %LOG% ECHO %LINE%
+ECHO SHAREDFILE
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
 
-::
-:_3
+:: PORT
+:_PORT
 CLS
 >> %LOG% ECHO %LINE%
+ECHO PORT
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
 
-::
-:_4
+:: SERVICE LIST
+:_SERVICE
 CLS
 >> %LOG% ECHO %LINE%
+ECHO SERVICE
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
 
-::
-:_5
+:: MOVING FILES
+:_MOVEDFILE
 CLS
 >> %LOG% ECHO %LINE%
->> %LOG% ECHO %LINE%
-PAUSE
-GOTO _HOME
-
-::
-:_6
-CLS
->> %LOG% ECHO %LINE%
+ECHO MOVED FILE
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
