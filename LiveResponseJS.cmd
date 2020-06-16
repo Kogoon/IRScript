@@ -6,7 +6,7 @@
 :: Joongbu Univ. Assignment
 :: 
 :: Help https://yong40.tistory.com/112
-:: Git https://github.com/Kogoon/IRScript
+:: Git https://github.com/Kogoon/forensic-lecture.git
 ::
 :: 2020.03.29 start
 :: 2020.04.02 end
@@ -65,7 +65,7 @@ ECHO                6. Loggedon User
 ECHO                7. Shared files
 ECHO                8. Open port
 ECHO                9. Service list
-ECHO                10. Moved files
+ECHO                10. Scheduled tasks
 ECHO                11. Exit
 ECHO.
 ECHO ====================================================
@@ -83,7 +83,7 @@ if "%number%" == "6" GOTO _LOGONUSER
 if "%number%" == "7" GOTO _SHAREDFILE
 if "%number%" == "8" GOTO _PORT
 if "%number%" == "9" GOTO _SERVICE
-if "%number%" == "10" GOTO _MOVEDFILE
+if "%number%" == "10" GOTO _SCHEDULER
 if "%number%" == "11" GOTO:EOF
 
 :: DATE
@@ -102,6 +102,7 @@ GOTO _HOME
 :_OS
 CLS
 >> %LOG% ECHO %LINE%
+>> %LOG% SYSTEMINFO
 ECHO Saving.. OS information
 >> %LOG% ECHO %LINE%
 PAUSE
@@ -121,7 +122,8 @@ GOTO _HOME
 :_NETSTAT
 CLS
 >> %LOG% ECHO %LINE%
-ECHO NETSTAT
+netstat -nao >> %LOG%
+ECHO Saving.. NETSTAT
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
@@ -130,7 +132,8 @@ GOTO _HOME
 :_PROCESS
 CLS
 >> %LOG% ECHO %LINE%
-ECHO PROCESS
+pslist.exe >> %LOG%
+ECHO Saving.. PROCESS
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
@@ -139,7 +142,8 @@ GOTO _HOME
 :_LOGONUSER
 CLS
 >> %LOG% ECHO %LINE%
-ECHO LOGONUSER
+net session >> %LOG%
+ECHO Saving.. LOGONUSER
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
@@ -148,7 +152,8 @@ GOTO _HOME
 :_SHAREDFILE
 CLS
 >> %LOG% ECHO %LINE%
-ECHO SHAREDFILE
+net use >> %LOG%
+ECHO Saving.. SHAREDFILE
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
@@ -157,7 +162,8 @@ GOTO _HOME
 :_PORT
 CLS
 >> %LOG% ECHO %LINE%
-ECHO PORT
+netstat -b >> %LOG%
+ECHO Saving.. PORT
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
@@ -166,16 +172,18 @@ GOTO _HOME
 :_SERVICE
 CLS
 >> %LOG% ECHO %LINE%
-ECHO SERVICE
+PsService.exe >> %LOG%
+ECHO Saving.. SERVICE
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
 
-:: MOVING FILES
-:_MOVEDFILE
+:: CHECK SCHEDULER TASKS
+:_SCHEDULER
 CLS
 >> %LOG% ECHO %LINE%
-ECHO MOVED FILE
+schtasks >> %LOG%
+ECHO Saving.. CHECK SCHEDULER TASKS
 >> %LOG% ECHO %LINE%
 PAUSE
 GOTO _HOME
